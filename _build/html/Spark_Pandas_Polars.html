@@ -392,10 +392,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#study-2-most-common-taxi-trips"><strong>Study 2: Most common taxi trips</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#study-3-average-of-tips-per-borough"><strong>Study 3: Average of tips per borough</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-analysis"><strong>Time Analysis</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-and-number-of-cores"><strong>Spark and number of cores</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-and-number-of-cores"><strong>Spark and number of cores</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions"><strong>Conclusions</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions"><strong>Conclusions</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-vs-pandas-vs-polars"><strong>Spark vs Pandas vs Polars</strong></a></li>
 </ul>
 </li>
@@ -1732,13 +1732,13 @@ We have followed the nesxt steps:</p>
 <img alt="_images/4f752c031c4f43ee8d3574774d017bb5ff56815f90e70b9cdb8a38d7a69587aa.png" src="_images/4f752c031c4f43ee8d3574774d017bb5ff56815f90e70b9cdb8a38d7a69587aa.png" />
 </div>
 </div>
-</section>
-</section>
 <section id="conclusions">
-<h2><strong>Conclusions</strong><a class="headerlink" href="#conclusions" title="Link to this heading">#</a></h2>
+<h4><strong>Conclusions</strong><a class="headerlink" href="#conclusions" title="Link to this heading">#</a></h4>
 <p>In the first study, we compared three different methods and represented their efficiency in the same plot, focusing on time and speed-up. The time plot allowed us to assess the efficiency of these methods, and it was evident that RDDs performed the slowest, while the other methods showed similar performance, especially with a higher number of cores. Surprisingly, we did not observe the expected improvements in Spark RDDs, indicating that the dataset size might not be sufficient. In the next section, we plan to explore this further with a different dataset to better understand this behavior.</p>
 <p>The speed-up analysis in the subsequent plot revealed more promising results with a higher number of cores, which is an expected outcome. However, once again, RDDs exhibited a slower increase in speed-up as the number of cores increased.</p>
 <p>In our subsequent studies, we focused solely on the speed-up analysis because it provides valuable information. In both of these studies, we observed an increase in speed-up as the number of cores used increased. Although each method displayed a slightly different slope in its evolution, both methods demonstrated good scalability with the increasing number of cores.</p>
+</section>
+</section>
 <section id="spark-vs-pandas-vs-polars">
 <h3><strong>Spark vs Pandas vs Polars</strong><a class="headerlink" href="#spark-vs-pandas-vs-polars" title="Link to this heading">#</a></h3>
 <p>The next plot has been build with information extracted after a meticulous procedure that we are going to expose now:</p>
@@ -1997,10 +1997,10 @@ We have followed the nesxt steps:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#study-2-most-common-taxi-trips"><strong>Study 2: Most common taxi trips</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#study-3-average-of-tips-per-borough"><strong>Study 3: Average of tips per borough</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-analysis"><strong>Time Analysis</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-and-number-of-cores"><strong>Spark and number of cores</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-and-number-of-cores"><strong>Spark and number of cores</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions"><strong>Conclusions</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions"><strong>Conclusions</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-vs-pandas-vs-polars"><strong>Spark vs Pandas vs Polars</strong></a></li>
 </ul>
 </li>
