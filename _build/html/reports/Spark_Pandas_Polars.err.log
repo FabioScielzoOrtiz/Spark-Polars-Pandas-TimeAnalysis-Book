@@ -1,0 +1,102 @@
+Traceback (most recent call last):
+  File "C:\Users\fscielzo\anaconda3\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\fscielzo\anaconda3\Lib\site-packages\nbclient\client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fscielzo\anaconda3\Lib\site-packages\nbclient\util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fscielzo\anaconda3\Lib\site-packages\nbclient\util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fscielzo\anaconda3\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\fscielzo\anaconda3\Lib\site-packages\nbclient\client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\fscielzo\anaconda3\Lib\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\fscielzo\anaconda3\Lib\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import findspark
+findspark.init()
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName('Intro to Spark').master("local[*]").getOrCreate()
+sc = spark.sparkContext
+
+#############################################
+
+import pandas as pd
+import numpy as np
+import time
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set_style("whitegrid")
+from pyspark.sql.functions import round, expr, from_unixtime, unix_timestamp, date_format, count, concat, lit, col
+from pyspark.sql.types import IntegerType
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mPySparkRuntimeError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[2], line 6[0m
+[0;32m      2[0m findspark[38;5;241m.[39minit()
+[0;32m      4[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyspark[39;00m[38;5;21;01m.[39;00m[38;5;21;01msql[39;00m [38;5;28;01mimport[39;00m SparkSession
+[1;32m----> 6[0m spark [38;5;241m=[39m [43mSparkSession[49m[38;5;241;43m.[39;49m[43mbuilder[49m[38;5;241;43m.[39;49m[43mappName[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mIntro to Spark[39;49m[38;5;124;43m'[39;49m[43m)[49m[38;5;241;43m.[39;49m[43mmaster[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mlocal[*][39;49m[38;5;124;43m"[39;49m[43m)[49m[38;5;241;43m.[39;49m[43mgetOrCreate[49m[43m([49m[43m)[49m
+[0;32m      7[0m sc [38;5;241m=[39m spark[38;5;241m.[39msparkContext
+[0;32m      9[0m [38;5;66;03m#############################################[39;00m
+
+File [1;32mC:\Program Files (x86)\spark-3.5.0-bin-hadoop3\python\pyspark\sql\session.py:497[0m, in [0;36mSparkSession.Builder.getOrCreate[1;34m(self)[0m
+[0;32m    495[0m     sparkConf[38;5;241m.[39mset(key, value)
+[0;32m    496[0m [38;5;66;03m# This SparkContext may be an existing one.[39;00m
+[1;32m--> 497[0m sc [38;5;241m=[39m [43mSparkContext[49m[38;5;241;43m.[39;49m[43mgetOrCreate[49m[43m([49m[43msparkConf[49m[43m)[49m
+[0;32m    498[0m [38;5;66;03m# Do not update `SparkConf` for existing `SparkContext`, as it's shared[39;00m
+[0;32m    499[0m [38;5;66;03m# by all sessions.[39;00m
+[0;32m    500[0m session [38;5;241m=[39m SparkSession(sc, options[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39m_options)
+
+File [1;32mC:\Program Files (x86)\spark-3.5.0-bin-hadoop3\python\pyspark\context.py:515[0m, in [0;36mSparkContext.getOrCreate[1;34m(cls, conf)[0m
+[0;32m    513[0m [38;5;28;01mwith[39;00m SparkContext[38;5;241m.[39m_lock:
+[0;32m    514[0m     [38;5;28;01mif[39;00m SparkContext[38;5;241m.[39m_active_spark_context [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m--> 515[0m         [43mSparkContext[49m[43m([49m[43mconf[49m[38;5;241;43m=[39;49m[43mconf[49m[43m [49m[38;5;129;43;01mor[39;49;00m[43m [49m[43mSparkConf[49m[43m([49m[43m)[49m[43m)[49m
+[0;32m    516[0m     [38;5;28;01massert[39;00m SparkContext[38;5;241m.[39m_active_spark_context [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m
+[0;32m    517[0m     [38;5;28;01mreturn[39;00m SparkContext[38;5;241m.[39m_active_spark_context
+
+File [1;32mC:\Program Files (x86)\spark-3.5.0-bin-hadoop3\python\pyspark\context.py:201[0m, in [0;36mSparkContext.__init__[1;34m(self, master, appName, sparkHome, pyFiles, environment, batchSize, serializer, conf, gateway, jsc, profiler_cls, udf_profiler_cls, memory_profiler_cls)[0m
+[0;32m    195[0m [38;5;28;01mif[39;00m gateway [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m gateway[38;5;241m.[39mgateway_parameters[38;5;241m.[39mauth_token [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m    196[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[0;32m    197[0m         [38;5;124m"[39m[38;5;124mYou are trying to pass an insecure Py4j gateway to Spark. This[39m[38;5;124m"[39m
+[0;32m    198[0m         [38;5;124m"[39m[38;5;124m is not allowed as it is a security risk.[39m[38;5;124m"[39m
+[0;32m    199[0m     )
+[1;32m--> 201[0m [43mSparkContext[49m[38;5;241;43m.[39;49m[43m_ensure_initialized[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mgateway[49m[38;5;241;43m=[39;49m[43mgateway[49m[43m,[49m[43m [49m[43mconf[49m[38;5;241;43m=[39;49m[43mconf[49m[43m)[49m
+[0;32m    202[0m [38;5;28;01mtry[39;00m:
+[0;32m    203[0m     [38;5;28mself[39m[38;5;241m.[39m_do_init(
+[0;32m    204[0m         master,
+[0;32m    205[0m         appName,
+[1;32m   (...)[0m
+[0;32m    215[0m         memory_profiler_cls,
+[0;32m    216[0m     )
+
+File [1;32mC:\Program Files (x86)\spark-3.5.0-bin-hadoop3\python\pyspark\context.py:436[0m, in [0;36mSparkContext._ensure_initialized[1;34m(cls, instance, gateway, conf)[0m
+[0;32m    434[0m [38;5;28;01mwith[39;00m SparkContext[38;5;241m.[39m_lock:
+[0;32m    435[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m SparkContext[38;5;241m.[39m_gateway:
+[1;32m--> 436[0m         SparkContext[38;5;241m.[39m_gateway [38;5;241m=[39m gateway [38;5;129;01mor[39;00m [43mlaunch_gateway[49m[43m([49m[43mconf[49m[43m)[49m
+[0;32m    437[0m         SparkContext[38;5;241m.[39m_jvm [38;5;241m=[39m SparkContext[38;5;241m.[39m_gateway[38;5;241m.[39mjvm
+[0;32m    439[0m     [38;5;28;01mif[39;00m instance:
+
+File [1;32mC:\Program Files (x86)\spark-3.5.0-bin-hadoop3\python\pyspark\java_gateway.py:107[0m, in [0;36mlaunch_gateway[1;34m(conf, popen_kwargs)[0m
+[0;32m    104[0m     time[38;5;241m.[39msleep([38;5;241m0.1[39m)
+[0;32m    106[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m os[38;5;241m.[39mpath[38;5;241m.[39misfile(conn_info_file):
+[1;32m--> 107[0m     [38;5;28;01mraise[39;00m PySparkRuntimeError(
+[0;32m    108[0m         error_class[38;5;241m=[39m[38;5;124m"[39m[38;5;124mJAVA_GATEWAY_EXITED[39m[38;5;124m"[39m,
+[0;32m    109[0m         message_parameters[38;5;241m=[39m{},
+[0;32m    110[0m     )
+[0;32m    112[0m [38;5;28;01mwith[39;00m [38;5;28mopen[39m(conn_info_file, [38;5;124m"[39m[38;5;124mrb[39m[38;5;124m"[39m) [38;5;28;01mas[39;00m info:
+[0;32m    113[0m     gateway_port [38;5;241m=[39m read_int(info)
+
+[1;31mPySparkRuntimeError[0m: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+PySparkRuntimeError: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+
